@@ -6,13 +6,13 @@ public class Student {
 
 	Student(String name, String roll_number, Batch batch) {
 		this.name = name;
-		this.room_number = roll_number;
+		this.roll_number = roll_number;
 		this.batch = batch;
 	}
 
 	Student(String name, String roll_number, String batch) {
 		this.name = name;
-		this.room_number = roll_number;
+		this.roll_number = roll_number;
 		this.batch = new Batch(batch);
 	}
 
