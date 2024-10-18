@@ -1,5 +1,10 @@
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
+    	Scanner sc = new Scanner(System.in);
+    	TimeTable tt = new TimeTable();
+
         while (true) {
             System.out.println("\nChoices: ");
             System.out.println("1 : Add a course.");
@@ -10,12 +15,12 @@ public class Main {
 
             switch (choice) {
             case 1:
-                Course x = Course.acceptCourse();
-                x.printCourseDetails();
+                tt.addCourse(Course.acceptCourse());
                 break;
 
             case 2:
                 // TODO: Make the time table.
+                tt.printCourses();
                 System.exit(0);
 
             default:
