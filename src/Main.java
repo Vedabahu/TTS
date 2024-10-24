@@ -21,6 +21,7 @@ public class Main {
             case 2:
                 // TODO: Make the time table.
                 tt.printCourses();
+                tt.makeTheTimeTable();
                 System.exit(0);
 
             default:
