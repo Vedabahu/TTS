@@ -43,8 +43,5 @@ public class Course {
         return new Course(courseName, courseCode, L, T, P, S, C);
     }
 
-    public int[] get_ltpsc() {
-        return new int[]{L, T, P, S, C};
-    }
-
+    public int[] get_ltpsc() { return new int[] {L, T, P, S, C}; }
 }
