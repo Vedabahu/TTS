@@ -1,6 +1,7 @@
 package oop.veda;
 
 import java.io.IOException;
+import javax.swing.JFrame;
 import org.json.simple.parser.ParseException;
 
 public class Main {
@@ -14,15 +15,17 @@ public class Main {
         }
 
         // TODO: Make the time table.
-        
+
         if (!tt.validateCourses()) {
-        	System.out.println("All the courses can not be acomodated in a week. Please change the LTPSC structure or reduce the number of courses.");
-        	System.exit(1);
+            System.out.println(
+                "All the courses can not be acomodated in a week. Please "
+                +
+                "change the LTPSC structure or reduce the number of courses.");
+            System.exit(1);
         }
-        
+
         tt.printCourses();
         tt.makeTheTimeTable();
         tt.printTimeTable();
-        System.exit(0);
     }
 }

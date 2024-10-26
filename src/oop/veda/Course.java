@@ -57,4 +57,5 @@ public class Course {
     public int[] get_ltpsc() { return new int[] {L, T, P, S, C}; }
     public int[] get_ltp() { return new int[] {L, T, P}; }
     public String get_courseCode() { return courseCode; }
+    public String toString() { return get_courseCode(); }
 }

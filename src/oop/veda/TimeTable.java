@@ -1,27 +1,79 @@
 package oop.veda;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
+import javax.swing.*;
 
 public class TimeTable {
     private ArrayList<Course> cs = new ArrayList<Course>();
-    private String[][] timeTable;
+    private Course[][] timeTable = null;
 
     public void set_courses(ArrayList<Course> cs) { this.cs = cs; }
 
     public void printCourses() {
-        System.out.println("\n\nList of Courses: ");
+        System.out.println("\nList of Courses: ");
         for (Course c : cs) {
             c.printCourseDetails();
         }
     }
 
     public void printTimeTable() {
-        for (String[] day : timeTable) {
-            for (String slot : day) {
-                System.out.println(slot + "\t");
-            }
-            System.out.println();
+        String[] headings = new String[] {
+            "Day \\ Time", "09:00-09:30", "09:30-10:00", "10:00-10:30",
+            "Break",       "10:45-11:15", "11:15-11:45", "11:45-12:15",
+            "12:15-12:45", "12:45-13:15", "Break",       "14:30-15:00",
+            "15:00-15:30", "15:30-16:00", "16:00-16:30", "16:30-17:00",
+            "17:00-17:30"};
+
+        String[] days = {"Monday", "Tuesday", "Wednesday", "Thursday",
+                         "Friday"};
+
+        String[][] data = new String[5][17];
+
+        // making the first column as days
+        // 4th and 10th column as a break
+
+        for (int i = 0; i < 5; i++) {
+            data[i][0] = days[i];
+            data[i][4] = "Break";
+            data[i][10] = "Break";
         }
+
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 14; j++) {
+                int k = 1; // displacement value
+                if (j >= 3)
+                    k = 2;
+                if (j >= 8)
+                    k = 3;
+                if (timeTable[i][j] != null)
+                    data[i][j + k] = timeTable[i][j].toString();
+                else
+                    data[i][j + k] = "No Class";
+            }
+        }
+
+        JFrame f = new JFrame();
+        f.setTitle("TimeTable Schedule");
+
+        ImageIcon logo = new ImageIcon("images/logoMini.png");
+
+        System.out.print(logo.getDescription());
+
+        f.setIconImage(logo.getImage());
+
+        f.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) { System.exit(0); }
+        });
+
+        f.setSize(1400, 150);
+        f.setLocation(250, 250);
+
+        JTable table = new JTable(data, headings);
+
+        f.add(new JScrollPane(table));
+        f.setVisible(true);
     }
 
     public void makeTheTimeTable() {
@@ -35,35 +87,42 @@ public class TimeTable {
          * time slots)
          */
 
-        // TODO: Add a method to check if the LTPSC is valid. Like it should fit
-        // in a week.
+        timeTable = new Course[5][14];
 
         for (Course c : cs) {
-            int[] ltpsc = c.get_ltpsc();
-            for (String[] day : timeTable) {
-                // TODO : Assign the periods to the proper timings in the 2D
-                // Array.
+            int[] ltp = c.get_ltp();
+            double l = ltp[0], t = ltp[1], p = ltp[2];
 
-                for (String slot : day) {
-                    if (ltpsc[0] > 0 && slot == null) {
-                        slot = c.get_courseCode();
-                        ltpsc[0] -= 0.5;
+            while (l + t + p > 0) {
+                for (int i = 0; i < 5; i++) {
+                    boolean trigger = false;
+                    for (int j = 0; j < 14; j++) {
+                        if (timeTable[i][j] == null) {
+                            timeTable[i][j] = c;
+                            l -= 0.5;
+                            trigger = true;
+                            break;
+                            // l will go negative and compensate for t and p
+                        }
                     }
+                    if (trigger)
+                        break;
                 }
             }
         }
     }
-    
-	public boolean validateCourses() {
-		int totalHours = 0;
-		for (Course c : cs) {
-			int[] ltp = c.get_ltp();
-			totalHours += ltp[0] + ltp[1] + ltp[2];
-		}
 
-		if (totalHours < 35)
-			return true;
-		
-		return false;
-	}
+    public boolean validateCourses() {
+
+        int totalHours = 0;
+        for (Course c : cs) {
+            int[] ltp = c.get_ltp();
+            totalHours += ltp[0] + ltp[1] + ltp[2];
+        }
+
+        if (totalHours < 35)
+            return true;
+
+        return false;
+    }
 }
