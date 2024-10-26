@@ -1,3 +1,3 @@
 .PHONEY : format
-format: src/*.java
-	clang-format -i src/*.java
+format: src/oop/veda/*.java
+	clang-format -i src/oop/veda/*.java

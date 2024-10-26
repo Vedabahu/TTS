@@ -1,3 +1,5 @@
+package oop.veda;
+
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -25,7 +27,7 @@ public class Course {
     public void printCourseDetails() {
         System.out.println("\nCourse Name: " + courseName);
         System.out.println("Course code: " + courseCode);
-        System.out.printf("L-T-P-S-C: %d-%d-%d-%d-%d\n", L, T, P, S, C);
+        System.out.printf("L-T-P-S-C  : %d-%d-%d-%d-%d\n", L, T, P, S, C);
     }
 
     public static ArrayList<Course> acceptCourse()
@@ -53,5 +55,6 @@ public class Course {
     }
 
     public int[] get_ltpsc() { return new int[] {L, T, P, S, C}; }
+    public int[] get_ltp() { return new int[] {L, T, P}; }
     public String get_courseCode() { return courseCode; }
 }

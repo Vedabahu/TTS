@@ -1,3 +1,5 @@
+package oop.veda;
+
 import java.util.ArrayList;
 
 public class TimeTable {
@@ -24,15 +26,14 @@ public class TimeTable {
 
     public void makeTheTimeTable() {
         /*
-                Timings:  9:00 to 9:30 | 9:30 10 | 10 to 10:30 | <break> | 10:45
-           to 11:15 | 11:15 to 11 : 45 | 11:45 to 12:15 | 12:15 to 12:45 | 12:45
-           to 13:15 | <break> | 14:30 to 15 | 15 to 15:30 | 15:30 to 16:00 |
-           16:00 to 16:30 | 16:30 to 17 | 17 to 17:30 Duration: 30 | 30 | 30 |
-           ... | 30 | 30 | 30 | 30 | 30 | ... | 30 | 30 | 30 | 30 | 30 | 30
-                Array of size : 5 x 14 (5 working days, 14 split time slots)
-        */
-
-        timeTable = new String[5][14];
+         * Timings: 9:00 to 9:30 | 9:30 10 | 10 to 10:30 | <break> | 10:45 to
+         * 11:15 | 11:15 to 11 : 45 | 11:45 to 12:15 | 12:15 to 12:45 | 12:45 to
+         * 13:15 | <break> | 14:30 to 15 | 15 to 15:30 | 15:30 to 16:00 | 16:00
+         * to 16:30 | 16:30 to 17 | 17 to 17:30
+         * Duration: 30 | 30 | 30 | ... | 30 | 30 | 30 | 30 | 30 | ... | 30 | 30
+         * | 30 | 30 | 30 | 30 Array of size : 5 x 14 (5 working days, 14 split
+         * time slots)
+         */
 
         // TODO: Add a method to check if the LTPSC is valid. Like it should fit
         // in a week.
@@ -52,4 +53,17 @@ public class TimeTable {
             }
         }
     }
+    
+	public boolean validateCourses() {
+		int totalHours = 0;
+		for (Course c : cs) {
+			int[] ltp = c.get_ltp();
+			totalHours += ltp[0] + ltp[1] + ltp[2];
+		}
+
+		if (totalHours < 35)
+			return true;
+		
+		return false;
+	}
 }
