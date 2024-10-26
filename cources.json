@@ -2,13 +2,33 @@
 	"courses" : [
 		{
 			"title" : "Probablity",
-			"code" : "MA-101",
-			"LTPSC" : [1, 2, 3, 4, 5]
+			"code" : "MA201",
+			"LTPSC" : [3, 1, 0, 0, 4]
 		},
 		{
-			"title" : "Descrete Mathematics",
-			"code" : "MA-102",
-			"LTPSC" : [2, 3, 4 ,5, 6]
+			"title" : "Discrete Mathematics",
+			"code" : "CS201",
+			"LTPSC" : [3, 1, 0, 0, 4]
+		},
+		{
+			"title" : "Object Oriented Programming",
+			"code" : "CS207",
+			"LTPSC" : [3, 0, 2, 0, 4]
+		},
+		{
+			"title" : "Computer Architecture",
+			"code" : "CS208",
+			"LTPSC" : [3, 0, 2, 0, 4]
+		},
+		{
+			"title" : "Design and Analysis of Algorithms",
+			"code" : "CS202",
+			"LTPSC" : [3, 1, 2, 0, 5]
+		},
+		{
+			"title" : "Industrial Social Psychology",
+			"code" : "HS206",
+			"LTPSC" : [3, 0, 0, 0, 3]
 		}
 	]
 }
