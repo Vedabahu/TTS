@@ -4,7 +4,7 @@ public class TimeTable {
     private ArrayList<Course> cs = new ArrayList<Course>();
     private String[][] timeTable;
 
-    public void addCourse(Course c) { cs.add(c); }
+    public void set_courses(ArrayList<Course> cs) { this.cs = cs; }
 
     public void printCourses() {
         System.out.println("\n\nList of Courses: ");
@@ -12,14 +12,14 @@ public class TimeTable {
             c.printCourseDetails();
         }
     }
-    
+
     public void printTimeTable() {
-    	for (String[] day: timeTable) {
-    		for (String slot: day) {
-    			System.out.println(slot + "\t");
-    		}
-    		System.out.println();
-    	}
+        for (String[] day : timeTable) {
+            for (String slot : day) {
+                System.out.println(slot + "\t");
+            }
+            System.out.println();
+        }
     }
 
     public void makeTheTimeTable() {
@@ -50,7 +50,6 @@ public class TimeTable {
                     }
                 }
             }
-            
         }
     }
 }

@@ -1,4 +1,10 @@
-import java.util.Scanner;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.*;
 
 public class Course {
 
@@ -22,25 +28,28 @@ public class Course {
         System.out.printf("L-T-P-S-C: %d-%d-%d-%d-%d\n", L, T, P, S, C);
     }
 
-    public static Course acceptCourse() {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("\nEnter the course title: ");
-        String courseName = sc.nextLine();
-        System.out.print("Enter the course code: ");
-        String courseCode = sc.nextLine();
-        System.out.println("Enter the LTPSC details:-");
-        System.out.print("Enter L - ");
-        int L = sc.nextInt();
-        System.out.print("Enter T - ");
-        int T = sc.nextInt();
-        System.out.print("Enter P - ");
-        int P = sc.nextInt();
-        System.out.print("Enter S - ");
-        int S = sc.nextInt();
-        System.out.print("Enter C - ");
-        int C = sc.nextInt();
+    public static ArrayList<Course> acceptCourse()
+        throws IOException, ParseException, FileNotFoundException {
+        FileReader f = new FileReader("cources.json");
+        JSONObject jo = (JSONObject) new JSONParser().parse(f);
+        JSONArray c = (JSONArray)jo.get("courses");
 
-        return new Course(courseName, courseCode, L, T, P, S, C);
+        ArrayList<Course> courses = new ArrayList<Course>();
+
+        for (Object o : c) {
+            JSONObject o1 = (JSONObject)o;
+            String title = (String)o1.get("title");
+            String code = (String)o1.get("code");
+            JSONArray ltpsc = (JSONArray)o1.get("LTPSC");
+
+            courses.add(new Course(title, code, ((Long)ltpsc.get(0)).intValue(),
+                                   ((Long)ltpsc.get(1)).intValue(),
+                                   ((Long)ltpsc.get(2)).intValue(),
+                                   ((Long)ltpsc.get(3)).intValue(),
+                                   ((Long)ltpsc.get(4)).intValue()));
+        }
+
+        return courses;
     }
 
     public int[] get_ltpsc() { return new int[] {L, T, P, S, C}; }

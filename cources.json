@@ -1,0 +1,14 @@
+{
+	"courses" : [
+		{
+			"title" : "Probablity",
+			"code" : "MA-101",
+			"LTPSC" : [1, 2, 3, 4, 5]
+		},
+		{
+			"title" : "Descrete Mathematics",
+			"code" : "MA-102",
+			"LTPSC" : [2, 3, 4 ,5, 6]
+		}
+	]
+}
