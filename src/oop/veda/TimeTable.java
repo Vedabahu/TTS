@@ -59,8 +59,6 @@ public class TimeTable {
 
         ImageIcon logo = new ImageIcon("images/logoMini.png");
 
-        System.out.print(logo.getDescription());
-
         f.setIconImage(logo.getImage());
 
         f.addWindowListener(new WindowAdapter() {
