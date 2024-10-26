@@ -12,6 +12,15 @@ public class TimeTable {
             c.printCourseDetails();
         }
     }
+    
+    public void printTimeTable() {
+    	for (String[] day: timeTable) {
+    		for (String slot: day) {
+    			System.out.println(slot + "\t");
+    		}
+    		System.out.println();
+    	}
+    }
 
     public void makeTheTimeTable() {
         /*
@@ -23,7 +32,7 @@ public class TimeTable {
                 Array of size : 5 x 14 (5 working days, 14 split time slots)
         */
 
-        timeTable = new String[5][7];
+        timeTable = new String[5][14];
 
         // TODO: Add a method to check if the LTPSC is valid. Like it should fit
         // in a week.
@@ -31,9 +40,17 @@ public class TimeTable {
         for (Course c : cs) {
             int[] ltpsc = c.get_ltpsc();
             for (String[] day : timeTable) {
-                // TODO : Assign the periods to the proper timeings in the 2D
+                // TODO : Assign the periods to the proper timings in the 2D
                 // Array.
+
+                for (String slot : day) {
+                    if (ltpsc[0] > 0 && slot == null) {
+                        slot = c.get_courseCode();
+                        ltpsc[0] -= 0.5;
+                    }
+                }
             }
+            
         }
     }
 }

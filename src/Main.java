@@ -1,3 +1,6 @@
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class Main {
@@ -22,6 +25,7 @@ public class Main {
                 // TODO: Make the time table.
                 tt.printCourses();
                 tt.makeTheTimeTable();
+                tt.printTimeTable();
                 System.exit(0);
 
             default:

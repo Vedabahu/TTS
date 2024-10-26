@@ -25,9 +25,9 @@ public class Course {
     public static Course acceptCourse() {
         Scanner sc = new Scanner(System.in);
         System.out.print("\nEnter the course title: ");
-        String courseName = sc.next();
+        String courseName = sc.nextLine();
         System.out.print("Enter the course code: ");
-        String courseCode = sc.next();
+        String courseCode = sc.nextLine();
         System.out.println("Enter the LTPSC details:-");
         System.out.print("Enter L - ");
         int L = sc.nextInt();
@@ -44,4 +44,5 @@ public class Course {
     }
 
     public int[] get_ltpsc() { return new int[] {L, T, P, S, C}; }
+    public String get_courseCode() { return courseCode; }
 }
