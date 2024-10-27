@@ -120,6 +120,8 @@ public class TimeTable {
 
 		for (Course c : cs) {
 			double t = c.get_ltp()[1];
+			Course x = new Course(c);
+			x.set_lectureType("Tutorial");
 			// Satisfying the T in ltpsc
 			// Loop through the 5 days
 			for (int i = 0; i < 5 && t > 0; i++) {
@@ -127,7 +129,7 @@ public class TimeTable {
 					// Leave the 2 hour slot after lunch for the lab
 					if (j >= 8 && j <= 11) continue;
 					if (timeTable[i][j] == null) {
-						timeTable[i][j] = c;
+						timeTable[i][j] = x;
 						t -= 0.5;
 					}
 				}
@@ -136,13 +138,15 @@ public class TimeTable {
 		
 		for (Course c : cs) {
 			double p = c.get_ltp()[2];
+			Course x = new Course(c);
+			x.set_lectureType("Lab");
 			// Satisfying the P in ltpsc
 			// Loop through the 5 days
 			for (int i = 0; i < 5 && p > 0; i++) {
 				for (int j = 0; j < 14 && p > 0; j++) {
 					// Leave the 2 hour slot after lunch for the lab
 					if (timeTable[i][j] == null) {
-						timeTable[i][j] = c;
+						timeTable[i][j] = x;
 						p -= 0.5;
 					}
 				}
