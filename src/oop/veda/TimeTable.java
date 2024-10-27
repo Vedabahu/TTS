@@ -73,21 +73,24 @@ public class TimeTable {
 
         JTable table1 = new JTable(data, headings);
         JTable table2 = new JTable(getCoursesAsArray(),
-        			new String[] {"Course Title", "Course Code", "L-T-P-S-C"}
-        		);
-        
-        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
-        centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+                                   new String[] {"Course Title", "Course Code",
+                                                 "Lecturer", "L-T-P-S-C"});
+
+        DefaultTableCellRenderer centerRenderer =
+            new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
         for (int i = 0; i < table1.getColumnCount(); i++)
-        	table1.getColumnModel().getColumn(i).setCellRenderer( centerRenderer );
+            table1.getColumnModel().getColumn(i).setCellRenderer(
+                centerRenderer);
         for (int i = 0; i < table2.getColumnCount(); i++)
-        	table2.getColumnModel().getColumn(i).setCellRenderer( centerRenderer );
-        
-        JScrollPane tt1 = new JScrollPane(table1); 
-        JScrollPane tt2 = new JScrollPane(table2); 
-        
+            table2.getColumnModel().getColumn(i).setCellRenderer(
+                centerRenderer);
+
+        JScrollPane tt1 = new JScrollPane(table1);
+        JScrollPane tt2 = new JScrollPane(table2);
+
         JPanel panel = new JPanel(new GridLayout(2, 1));
-        
+
         panel.add(tt1);
         panel.add(tt2);
         f.add(panel, BorderLayout.CENTER);
@@ -212,15 +215,17 @@ public class TimeTable {
         }
         return false;
     }
-    
+
     private String[][] getCoursesAsArray() {
-    	String[][] ccc = new String[cs.size()][3];
-    	for (int i = 0; i < cs.size(); i++) {
-    		ccc[i][0] = cs.get(i).get_courseName();
-    		ccc[i][1] = cs.get(i).get_courseCode();
-    		int arr[] = cs.get(i).get_ltpsc();
-    		ccc[i][2] = arr[0] + "-" + arr[1] + "-" + arr[2] + "-" + arr[3] + "-" + arr[4];
-    	}
-    	return ccc;
+        String[][] ccc = new String[cs.size()][4];
+        for (int i = 0; i < cs.size(); i++) {
+            ccc[i][0] = cs.get(i).get_courseName();
+            ccc[i][1] = cs.get(i).get_courseCode();
+            int arr[] = cs.get(i).get_ltpsc();
+            ccc[i][2] = cs.get(i).get_instructor();
+            ccc[i][3] = arr[0] + "-" + arr[1] + "-" + arr[2] + "-" + arr[3] +
+                        "-" + arr[4];
+        }
+        return ccc;
     }
 }

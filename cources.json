@@ -3,32 +3,38 @@
 		{
 			"title" : "Probablity",
 			"code" : "MA201",
-			"LTPSC" : [3, 1, 0, 0, 4]
+			"LTPSC" : [3, 1, 0, 0, 4],
+			"lecturer": "Dr. Anand P Barangi"
 		},
 		{
 			"title" : "Discrete Mathematics",
 			"code" : "CS201",
-			"LTPSC" : [3, 1, 0, 0, 4]
+			"LTPSC" : [3, 1, 0, 0, 4],
+			"lecturer": "Dr. Sadhvi M"
 		},
 		{
 			"title" : "Object Oriented Programming",
 			"code" : "CS207",
-			"LTPSC" : [3, 0, 2, 0, 4]
+			"LTPSC" : [3, 0, 2, 0, 4],
+			"lecturer": "Dr. Vivekraj VK"
 		},
 		{
 			"title" : "Computer Architecture",
 			"code" : "CS208",
-			"LTPSC" : [3, 0, 2, 0, 4]
+			"LTPSC" : [3, 0, 2, 0, 4],
+			"lecturer": "Dr. Prabhu Prasad"
 		},
 		{
 			"title" : "Design and Analysis of Algorithms",
 			"code" : "CS202",
-			"LTPSC" : [3, 1, 2, 0, 5]
+			"LTPSC" : [3, 1, 2, 0, 5],
+			"lecturer": "Dr. Dibyajothi Guha"
 		},
 		{
 			"title" : "Industrial Social Psychology",
 			"code" : "HS206",
-			"LTPSC" : [3, 0, 0, 0, 3]
+			"LTPSC" : [3, 0, 0, 0, 3],
+			"lecturer": "Dr. Navyashree G R"
 		}
 	]
 }
