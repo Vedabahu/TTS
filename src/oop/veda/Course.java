@@ -13,6 +13,7 @@ public class Course {
     private String courseName;
     private String courseCode;
     private int L, T, P, S, C;
+    private String lectureType = "Lecture";
 
     public Course(String name, String code, int L, int T, int P, int S, int C) {
         courseName = name;
@@ -24,6 +25,18 @@ public class Course {
         this.C = C;
     }
 
+    public Course(Course another) {
+    	// Copy constructor
+    	this.courseName = another.get_courseName();
+    	this.courseCode = another.get_courseCode();
+    	int[] ltpsc = another.get_ltpsc();
+    	this.L = ltpsc[0];
+        this.T = ltpsc[1];
+        this.P = ltpsc[2];
+        this.S = ltpsc[3];
+        this.C = ltpsc[4];
+    }
+    
     public void printCourseDetails() {
         System.out.println("\nCourse Name: " + courseName);
         System.out.println("Course code: " + courseCode);
@@ -55,7 +68,10 @@ public class Course {
     }
 
     public int[] get_ltpsc() { return new int[] {L, T, P, S, C}; }
+    public String get_courseName() { return courseName; }
     public int[] get_ltp() { return new int[] {L, T, P}; }
     public String get_courseCode() { return courseCode; }
-    public String toString() { return get_courseCode(); }
+    public void set_lectureType(String type) { lectureType = type; } 
+    public String get_lectureType() { return lectureType; }
+    public String toString() { return get_courseCode() + "   " + get_lectureType(); }
 }
