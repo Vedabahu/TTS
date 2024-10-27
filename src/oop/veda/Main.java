@@ -13,8 +13,6 @@ public class Main {
             System.exit(1);
         }
 
-        // TODO: Make the time table.
-
         if (!tt.validateCourses()) {
             System.out.println(
                 "All the courses can not be acomodated in a week. Please "
@@ -23,7 +21,6 @@ public class Main {
             System.exit(1);
         }
 
-        tt.printCourses();
         tt.makeTheTimeTable();
         tt.printTimeTable();
     }

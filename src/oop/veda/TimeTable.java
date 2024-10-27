@@ -1,9 +1,12 @@
 package oop.veda;
 
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
 
 public class TimeTable {
     private ArrayList<Course> cs = new ArrayList<Course>();
@@ -65,12 +68,29 @@ public class TimeTable {
             public void windowClosing(WindowEvent e) { System.exit(0); }
         });
 
-        f.setSize(1920, 150);
+        f.setSize(1920, 350);
         f.setLocation(250, 250);
 
-        JTable table = new JTable(data, headings);
-
-        f.add(new JScrollPane(table));
+        JTable table1 = new JTable(data, headings);
+        JTable table2 = new JTable(getCoursesAsArray(),
+        			new String[] {"Course Title", "Course Code", "L-T-P-S-C"}
+        		);
+        
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+        for (int i = 0; i < table1.getColumnCount(); i++)
+        	table1.getColumnModel().getColumn(i).setCellRenderer( centerRenderer );
+        for (int i = 0; i < table2.getColumnCount(); i++)
+        	table2.getColumnModel().getColumn(i).setCellRenderer( centerRenderer );
+        
+        JScrollPane tt1 = new JScrollPane(table1); 
+        JScrollPane tt2 = new JScrollPane(table2); 
+        
+        JPanel panel = new JPanel(new GridLayout(2, 1));
+        
+        panel.add(tt1);
+        panel.add(tt2);
+        f.add(panel, BorderLayout.CENTER);
         f.setVisible(true);
     }
 
@@ -191,5 +211,16 @@ public class TimeTable {
             }
         }
         return false;
+    }
+    
+    private String[][] getCoursesAsArray() {
+    	String[][] ccc = new String[cs.size()][3];
+    	for (int i = 0; i < cs.size(); i++) {
+    		ccc[i][0] = cs.get(i).get_courseName();
+    		ccc[i][1] = cs.get(i).get_courseCode();
+    		int arr[] = cs.get(i).get_ltpsc();
+    		ccc[i][2] = arr[0] + "-" + arr[1] + "-" + arr[2] + "-" + arr[3] + "-" + arr[4];
+    	}
+    	return ccc;
     }
 }
