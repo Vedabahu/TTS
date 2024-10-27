@@ -26,17 +26,17 @@ public class Course {
     }
 
     public Course(Course another) {
-    	// Copy constructor
-    	this.courseName = another.get_courseName();
-    	this.courseCode = another.get_courseCode();
-    	int[] ltpsc = another.get_ltpsc();
-    	this.L = ltpsc[0];
+        // Copy constructor
+        this.courseName = another.get_courseName();
+        this.courseCode = another.get_courseCode();
+        int[] ltpsc = another.get_ltpsc();
+        this.L = ltpsc[0];
         this.T = ltpsc[1];
         this.P = ltpsc[2];
         this.S = ltpsc[3];
         this.C = ltpsc[4];
     }
-    
+
     public void printCourseDetails() {
         System.out.println("\nCourse Name: " + courseName);
         System.out.println("Course code: " + courseCode);
@@ -71,7 +71,9 @@ public class Course {
     public String get_courseName() { return courseName; }
     public int[] get_ltp() { return new int[] {L, T, P}; }
     public String get_courseCode() { return courseCode; }
-    public void set_lectureType(String type) { lectureType = type; } 
+    public void set_lectureType(String type) { lectureType = type; }
     public String get_lectureType() { return lectureType; }
-    public String toString() { return get_courseCode() + "   " + get_lectureType(); }
+    public String toString() {
+        return get_courseCode() + "   " + get_lectureType();
+    }
 }
