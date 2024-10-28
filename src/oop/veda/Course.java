@@ -16,6 +16,7 @@ public class Course {
     private String lectureType = "Lecture";
     private String instructor;
     private String preRequsite = "";
+    private String labAssistance;
 
     public Course(String name, String code, int L, int T, int P, int S, int C,
                   String instructor) {
@@ -28,11 +29,12 @@ public class Course {
         this.C = C;
         this.instructor = instructor;
     }
-    
+
     public Course(String name, String code, int L, int T, int P, int S, int C,
-                  String instructor, String preReq) {
-    	this(name, code, L, T, P, S, C, instructor);
-    	set_preRequsite(preReq);
+                  String instructor, String preReq, String labAssistance) {
+        this(name, code, L, T, P, S, C, instructor);
+        set_preRequsite(preReq);
+        set_labAssistance(labAssistance);
     }
 
     public Course(Course another) {
@@ -71,15 +73,26 @@ public class Course {
             JSONArray ltpsc = (JSONArray)o1.get("LTPSC");
             String lect = (String)o1.get("lecturer");
             String preReq = (String)o1.get("pre-req");
-            
-            if (preReq == null) preReq = "";
+            String lab_assistance = (String)o1.get("lab-assistance");
 
+            if ((Long)ltpsc.get(2) <= 0 && (lab_assistance != null)) {
+                System.err.println(
+                    "Assigned Lab assistance when there is no lab.");
+                System.err.println("Ignoring the lab assistance for " + code);
+                lab_assistance = null;
+            }
+
+            if (preReq == null)
+                preReq = "";
+            if (lab_assistance == null)
+                lab_assistance = "";
 
             courses.add(new Course(title, code, ((Long)ltpsc.get(0)).intValue(),
                                    ((Long)ltpsc.get(1)).intValue(),
                                    ((Long)ltpsc.get(2)).intValue(),
                                    ((Long)ltpsc.get(3)).intValue(),
-                                   ((Long)ltpsc.get(4)).intValue(), lect, preReq));
+                                   ((Long)ltpsc.get(4)).intValue(), lect,
+                                   preReq, lab_assistance));
         }
 
         return courses;
@@ -96,11 +109,15 @@ public class Course {
     }
     public String get_instructor() { return instructor; }
 
-	public String get_preRequsite() {
-		return preRequsite;
-	}
+    public String get_preRequsite() { return preRequsite; }
 
-	public void set_preRequsite(String preRequsite) {
-		this.preRequsite = preRequsite;
-	}
+    public void set_preRequsite(String preRequsite) {
+        this.preRequsite = preRequsite;
+    }
+
+    public String get_labAssistance() { return labAssistance; }
+
+    public void set_labAssistance(String labAssistance) {
+        this.labAssistance = labAssistance;
+    }
 }

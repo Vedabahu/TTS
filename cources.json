@@ -17,20 +17,23 @@
 			"code" : "CS207",
 			"LTPSC" : [3, 0, 2, 0, 4],
 			"pre-req": "CS105",
-			"lecturer": "Dr. Vivekraj VK"
+			"lecturer": "Dr. Vivekraj VK",
+			"lab-assistance": "Ms. Sahana E P,  Ms. Madhu Asundi"
 		},
 		{
 			"title" : "Computer Architecture",
 			"code" : "CS208",
 			"LTPSC" : [3, 0, 2, 0, 4],
 			"pre-req": "CS106",
-			"lecturer": "Dr. Prabhu Prasad"
+			"lecturer": "Dr. Prabhu Prasad",
+			"lab-assistance": "Ms. Sahana E P,  Ms. Anupama Patila"
 		},
 		{
 			"title" : "Design and Analysis of Algorithms",
 			"code" : "CS202",
 			"LTPSC" : [3, 1, 2, 0, 5],
-			"lecturer": "Dr. Dibyajothi Guha"
+			"lecturer": "Dr. Dibyajothi Guha",
+			"lab-assistance": "Ms. Ashwini Chikkenkoppa, Ms. Chaitra D"
 		},
 		{
 			"title" : "Industrial Social Psychology",
