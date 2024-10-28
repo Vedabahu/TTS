@@ -7,6 +7,7 @@ InsertBraces: true
 # BreakBeforeBraces: Allman
 BreakBeforeBraces: Attach
 SeparateDefinitionBlocks: Always
+SortIncludes: true
 ---
 Language: Json
 BreakArrays: false

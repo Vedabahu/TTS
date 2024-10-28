@@ -1,4 +1,4 @@
 .PHONEY : format
-format: src/oop/veda/*.java
+format: src/oop/veda/*.java courses.json
 	clang-format -i src/oop/veda/*.java
-	clang-format -i cources.json
+	clang-format -i courses.json
