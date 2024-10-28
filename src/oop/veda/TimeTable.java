@@ -1,6 +1,8 @@
 package oop.veda;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -12,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 
 public class TimeTable {
@@ -73,13 +76,23 @@ public class TimeTable {
             }
         });
 
-        f.setSize(1920, 350);
+        f.setSize(1920, 500);
         f.setLocation(250, 250);
 
         JTable table1 = new JTable(data, headings);
         JTable table2 = new JTable(getCoursesAsArray(),
                 new String[] {"Course Title", "Course Code", "L-T-P-S-C", "Pre-requsite",
                         "Lecturer", "Lab Assistance"});
+
+        Font nice_font        = new Font(Font.SANS_SERIF, Font.PLAIN, 14);
+        Font nice_header_font = new Font(Font.SANS_SERIF, Font.BOLD, 14);
+
+        table1.setFont(nice_font);
+        table2.setFont(nice_font);
+        table1.setRowHeight(30);
+        table2.setRowHeight(30);
+        table1.getTableHeader().setFont(nice_header_font);
+        table2.getTableHeader().setFont(nice_header_font);
 
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(JLabel.CENTER);
@@ -92,6 +105,10 @@ public class TimeTable {
         JScrollPane tt2 = new JScrollPane(table2);
 
         JPanel panel = new JPanel(new GridLayout(2, 1));
+
+        EmptyBorder padding = new EmptyBorder(20, 20, 20, 20);
+
+        panel.setBorder(padding);
 
         panel.add(tt1);
         panel.add(tt2);

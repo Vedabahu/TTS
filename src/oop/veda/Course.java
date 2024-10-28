@@ -118,7 +118,7 @@ public class Course {
     }
 
     public String toString() {
-        return get_courseCode() + "   " + get_lectureType();
+        return get_courseCode() + " " + get_lectureType();
     }
 
     public String get_instructor() {
