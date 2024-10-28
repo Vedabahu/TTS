@@ -1,7 +1,8 @@
 package oop.veda;
 
-import java.io.IOException;
 import org.json.simple.parser.ParseException;
+
+import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
@@ -14,10 +15,8 @@ public class Main {
         }
 
         if (!tt.validateCourses()) {
-            System.out.println(
-                "All the courses can not be acomodated in a week. Please "
-                +
-                "change the LTPSC structure or reduce the number of courses.");
+            System.out.println("All the courses can not be acomodated in a week. Please "
+                    + "change the LTPSC structure or reduce the number of courses.");
             System.exit(1);
         }
 

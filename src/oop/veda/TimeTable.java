@@ -5,6 +5,7 @@ import java.awt.GridLayout;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 
@@ -12,7 +13,9 @@ public class TimeTable {
     private ArrayList<Course> cs = new ArrayList<Course>();
     private Course[][] timeTable = null;
 
-    public void set_courses(ArrayList<Course> cs) { this.cs = cs; }
+    public void set_courses(ArrayList<Course> cs) {
+        this.cs = cs;
+    }
 
     public void printCourses() {
         System.out.println("\nList of Courses: ");
@@ -22,15 +25,12 @@ public class TimeTable {
     }
 
     public void printTimeTable() {
-        String[] headings = new String[] {
-            "Day \\ Time", "09:00-09:30", "09:30-10:00", "10:00-10:30",
-            "Break",       "10:45-11:15", "11:15-11:45", "11:45-12:15",
-            "12:15-12:45", "12:45-13:15", "Break",       "14:30-15:00",
-            "15:00-15:30", "15:30-16:00", "16:00-16:30", "16:30-17:00",
-            "17:00-17:30"};
+        String[] headings = new String[] {"Day \\ Time", "09:00-09:30", "09:30-10:00",
+                "10:00-10:30", "Break", "10:45-11:15", "11:15-11:45", "11:45-12:15", "12:15-12:45",
+                "12:45-13:15", "Break", "14:30-15:00", "15:00-15:30", "15:30-16:00", "16:00-16:30",
+                "16:30-17:00", "17:00-17:30"};
 
-        String[] days = {"Monday", "Tuesday", "Wednesday", "Thursday",
-                         "Friday"};
+        String[] days = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
 
         String[][] data = new String[5][17];
 
@@ -38,22 +38,20 @@ public class TimeTable {
         // 4th and 10th column as a break
 
         for (int i = 0; i < 5; i++) {
-            data[i][0] = days[i];
-            data[i][4] = "Break";
+            data[i][0]  = days[i];
+            data[i][4]  = "Break";
             data[i][10] = "Break";
         }
 
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 14; j++) {
                 int k = 1; // displacement value
-                if (j >= 3)
-                    k = 2;
-                if (j >= 8)
-                    k = 3;
+                if (j >= 3) k = 2;
+                if (j >= 8) k = 3;
                 if (timeTable[i][j] != null)
                     data[i][j + k] = timeTable[i][j].toString();
                 else
-                    data[i][j + k] = "No Class";
+                    data[i][j + k] = ""; // Keep it empty
             }
         }
 
@@ -65,7 +63,9 @@ public class TimeTable {
         f.setIconImage(logo.getImage());
 
         f.addWindowListener(new WindowAdapter() {
-            public void windowClosing(WindowEvent e) { System.exit(0); }
+            public void windowClosing(WindowEvent e) {
+                System.exit(0);
+            }
         });
 
         f.setSize(1920, 350);
@@ -73,19 +73,15 @@ public class TimeTable {
 
         JTable table1 = new JTable(data, headings);
         JTable table2 = new JTable(getCoursesAsArray(),
-                                   new String[] {"Course Title", "Course Code",
-                                                 "L-T-P-S-C", "Pre-requsite",
-                                                 "Lecturer", "Lab Assistance"});
+                new String[] {"Course Title", "Course Code", "L-T-P-S-C", "Pre-requsite",
+                        "Lecturer", "Lab Assistance"});
 
-        DefaultTableCellRenderer centerRenderer =
-            new DefaultTableCellRenderer();
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(JLabel.CENTER);
         for (int i = 0; i < table1.getColumnCount(); i++)
-            table1.getColumnModel().getColumn(i).setCellRenderer(
-                centerRenderer);
+            table1.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
         for (int i = 0; i < table2.getColumnCount(); i++)
-            table2.getColumnModel().getColumn(i).setCellRenderer(
-                centerRenderer);
+            table2.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
 
         JScrollPane tt1 = new JScrollPane(table1);
         JScrollPane tt2 = new JScrollPane(table2);
@@ -115,19 +111,16 @@ public class TimeTable {
             for (int i = 0; i < 5 && l > 0; i++) {
                 for (int j = 0; j < 14 && l > 0; j++) {
                     if (j >= 3) {
-                        if (timeTable[i][j - 1] != null &&
-                            timeTable[i][j - 2] != null &&
-                            timeTable[i][j - 3] != null)
-                            if (timeTable[i][j - 1].equals(c) &&
-                                timeTable[i][j - 2].equals(c) &&
-                                timeTable[i][j - 3].equals(c)) {
+                        if (timeTable[i][j - 1] != null && timeTable[i][j - 2] != null
+                                && timeTable[i][j - 3] != null)
+                            if (timeTable[i][j - 1].equals(c) && timeTable[i][j - 2].equals(c)
+                                    && timeTable[i][j - 3].equals(c)) {
                                 break;
                             }
                     }
 
                     // To avoid breaks
-                    if (j == 6 || j == 7)
-                        j = 8;
+                    if (j == 6 || j == 7) j = 8;
 
                     if (timeTable[i][j] == null) {
                         timeTable[i][j] = c;
@@ -142,12 +135,11 @@ public class TimeTable {
             Course x = new Course(c);
             x.set_lectureType("Lab");
             for (int i = 0; i < 5 && p > 0; i++) {
-                int j = 3;
+                int j               = 3;
                 boolean assignedLab = false;
-                if (timeTable[i][j] == null && timeTable[i][j + 1] == null &&
-                    timeTable[i][j + 2] == null &&
-                    timeTable[i][j + 3] == null) {
-                    timeTable[i][j] = x;
+                if (timeTable[i][j] == null && timeTable[i][j + 1] == null
+                        && timeTable[i][j + 2] == null && timeTable[i][j + 3] == null) {
+                    timeTable[i][j]     = x;
                     timeTable[i][j + 1] = x;
                     timeTable[i][j + 2] = x;
                     timeTable[i][j + 3] = x;
@@ -155,10 +147,10 @@ public class TimeTable {
                     assignedLab = true;
                 }
                 j = 8;
-                if (timeTable[i][j] == null && timeTable[i][j + 1] == null &&
-                    timeTable[i][j + 2] == null &&
-                    timeTable[i][j + 3] == null && !assignedLab) {
-                    timeTable[i][j] = x;
+                if (timeTable[i][j] == null && timeTable[i][j + 1] == null
+                        && timeTable[i][j + 2] == null && timeTable[i][j + 3] == null
+                        && !assignedLab) {
+                    timeTable[i][j]     = x;
                     timeTable[i][j + 1] = x;
                     timeTable[i][j + 2] = x;
                     timeTable[i][j + 3] = x;
@@ -173,14 +165,11 @@ public class TimeTable {
             x.set_lectureType("Tutorial");
 
             for (int i = 0; i < 5 && t > 0; i++) {
-
-                if (searchDayForAnyOtherLecture(c, i))
-                    continue;
+                if (searchDayForAnyOtherLecture(c, i)) continue;
 
                 for (int j = 0; j < 13 && t > 0; j++) {
-                    if (timeTable[i][j] == null &&
-                        timeTable[i][j + 1] == null) {
-                        timeTable[i][j] = x;
+                    if (timeTable[i][j] == null && timeTable[i][j + 1] == null) {
+                        timeTable[i][j]     = x;
                         timeTable[i][j + 1] = x;
                         t -= 1;
                         break;
@@ -191,23 +180,20 @@ public class TimeTable {
     }
 
     public boolean validateCourses() {
-
         int totalHours = 0;
         for (Course c : cs) {
             int[] ltp = c.get_ltp();
             totalHours += ltp[0] + ltp[1] + ltp[2];
         }
 
-        if (totalHours < 35)
-            return true;
+        if (totalHours < 35) return true;
 
         return false;
     }
 
     private boolean searchDayForAnyOtherLecture(Course c, int day) {
         for (Course x : timeTable[day]) {
-            if (x == null)
-                continue;
+            if (x == null) continue;
             if (!x.get_lectureType().equals("Lab")) {
                 if (x.get_courseCode().equals(c.get_courseCode())) {
                     return true;
@@ -223,8 +209,7 @@ public class TimeTable {
             ccc[i][0] = cs.get(i).get_courseName();
             ccc[i][1] = cs.get(i).get_courseCode();
             int arr[] = cs.get(i).get_ltpsc();
-            ccc[i][2] = arr[0] + "-" + arr[1] + "-" + arr[2] + "-" + arr[3] +
-                        "-" + arr[4];
+            ccc[i][2] = arr[0] + "-" + arr[1] + "-" + arr[2] + "-" + arr[3] + "-" + arr[4];
             ccc[i][3] = cs.get(i).get_preRequsite();
             ccc[i][4] = cs.get(i).get_instructor();
             ccc[i][5] = cs.get(i).get_labAssistance();
