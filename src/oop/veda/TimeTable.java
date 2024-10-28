@@ -1,7 +1,6 @@
 package oop.veda;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.WindowAdapter;
@@ -76,7 +75,7 @@ public class TimeTable {
             }
         });
 
-        f.setSize(1920, 500);
+        f.setSize(1920, 483);
         f.setLocation(250, 250);
 
         JTable table1 = new JTable(data, headings);

@@ -15,7 +15,7 @@ public class Main {
         }
 
         if (!tt.validateCourses()) {
-            System.out.println("All the courses can not be acomodated in a week. Please "
+            System.out.println("All the courses can not be acomodable in a week. Please "
                     + "change the LTPSC structure or reduce the number of courses.");
             System.exit(1);
         }
