@@ -1,14 +1,14 @@
 package oop.veda;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
 
 public class Course {
     private String courseName;
@@ -16,8 +16,8 @@ public class Course {
     private int L, T, P, S, C;
     private String lectureType = "Lecture";
     private String instructor;
-    private String preRequsite = "";
-    private String labAssistance;
+    private String preRequsite   = "";
+    private String labAssistance = "";
 
     public Course(String name, String code, int L, int T, int P, int S, int C, String instructor) {
         courseName      = name;
