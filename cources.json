@@ -16,12 +16,14 @@
 			"title" : "Object Oriented Programming",
 			"code" : "CS207",
 			"LTPSC" : [3, 0, 2, 0, 4],
+			"pre-req": "CS105",
 			"lecturer": "Dr. Vivekraj VK"
 		},
 		{
 			"title" : "Computer Architecture",
 			"code" : "CS208",
 			"LTPSC" : [3, 0, 2, 0, 4],
+			"pre-req": "CS106",
 			"lecturer": "Dr. Prabhu Prasad"
 		},
 		{

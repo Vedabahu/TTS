@@ -15,6 +15,7 @@ public class Course {
     private int L, T, P, S, C;
     private String lectureType = "Lecture";
     private String instructor;
+    private String preRequsite = "";
 
     public Course(String name, String code, int L, int T, int P, int S, int C,
                   String instructor) {
@@ -26,6 +27,12 @@ public class Course {
         this.S = S;
         this.C = C;
         this.instructor = instructor;
+    }
+    
+    public Course(String name, String code, int L, int T, int P, int S, int C,
+                  String instructor, String preReq) {
+    	this(name, code, L, T, P, S, C, instructor);
+    	set_preRequsite(preReq);
     }
 
     public Course(Course another) {
@@ -39,6 +46,7 @@ public class Course {
         this.S = ltpsc[3];
         this.C = ltpsc[4];
         this.instructor = another.get_instructor();
+        this.preRequsite = another.get_preRequsite();
     }
 
     public void printCourseDetails() {
@@ -62,12 +70,16 @@ public class Course {
             String code = (String)o1.get("code");
             JSONArray ltpsc = (JSONArray)o1.get("LTPSC");
             String lect = (String)o1.get("lecturer");
+            String preReq = (String)o1.get("pre-req");
+            
+            if (preReq == null) preReq = "";
+
 
             courses.add(new Course(title, code, ((Long)ltpsc.get(0)).intValue(),
                                    ((Long)ltpsc.get(1)).intValue(),
                                    ((Long)ltpsc.get(2)).intValue(),
                                    ((Long)ltpsc.get(3)).intValue(),
-                                   ((Long)ltpsc.get(4)).intValue(), lect));
+                                   ((Long)ltpsc.get(4)).intValue(), lect, preReq));
         }
 
         return courses;
@@ -83,4 +95,12 @@ public class Course {
         return get_courseCode() + "   " + get_lectureType();
     }
     public String get_instructor() { return instructor; }
+
+	public String get_preRequsite() {
+		return preRequsite;
+	}
+
+	public void set_preRequsite(String preRequsite) {
+		this.preRequsite = preRequsite;
+	}
 }
