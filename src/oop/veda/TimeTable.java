@@ -108,14 +108,25 @@ public class TimeTable {
         act.setTextAlignment(TextAlignment.CENTER);
         act.getContext().setFrameLeftRightMargin(5);
         act.getContext().setFrameTopBottomMargin(1);
+
+        //        act.getContext().setGrid(U8_Grids.borderDouble());
         System.out.println(act.render());
 
         return act.render();
     }
 
     private void writeToFile(String filepath, String contents) {
-        Font outputFont = new Font(Font.MONOSPACED, Font.PLAIN, 28);
-        FontMetrics fm  = (new Canvas()).getFontMetrics(outputFont);
+        Font outputFont = null;
+        try {
+            //    		outputFont = Font.createFont(Font.TRUETYPE_FONT, new
+            //    File("assets/fonts/JetBrains-Mono-Nerd-Font-Complete.ttf")).deriveFont(28f);
+            outputFont = Font.createFont(Font.TRUETYPE_FONT,
+                                     new File("assets/fonts/CaskaydiaCoveNerdFont-Regular.ttf"))
+                                 .deriveFont(28f);
+        } catch (Exception _) {
+            outputFont = new Font(Font.MONOSPACED, Font.PLAIN, 28);
+        }
+        FontMetrics fm = (new Canvas()).getFontMetrics(outputFont);
 
         String[] lines = contents.split("\n");
 
