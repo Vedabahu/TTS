@@ -1,20 +1,27 @@
 package oop.veda;
 
-import java.awt.BorderLayout;
+import java.awt.Canvas;
+import java.awt.Color;
 import java.awt.Font;
-import java.awt.GridLayout;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import java.awt.FontMetrics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import java.awt.image.BufferedImage;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
+import java.util.Arrays;
 
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.border.EmptyBorder;
-import javax.swing.table.DefaultTableCellRenderer;
+import javax.imageio.ImageIO;
+
+import de.vandermeer.asciitable.AsciiTable;
+import de.vandermeer.skb.interfaces.transformers.textformat.TextAlignment;
 
 public class TimeTable {
     private ArrayList<Course> cs = new ArrayList<Course>();
@@ -61,61 +68,103 @@ public class TimeTable {
                     data[i][j + k] = ""; // Keep it empty
             }
         }
+        
+        String[] coursesHeadings = {"Course Title", "Course Code", "L-T-P-S-C", "Pre-requsite",
+              "Lecturer", "Lab Assistance"};
+        String[][] coursesArray = getCoursesAsArray();
+        
+        String s1 = printTableHelper(data, headings);
+        String s2 = printTableHelper(coursesArray, coursesHeadings, 200);
+        
+        writeToFile("timeTable/CSE-B.png", s1 + s2);
+        
 
-        JFrame f = new JFrame();
-        f.setTitle("TimeTable Schedule");
-
-        ImageIcon logo = new ImageIcon("images/logoMini.png");
-
-        f.setIconImage(logo.getImage());
-
-        f.addWindowListener(new WindowAdapter() {
-            public void windowClosing(WindowEvent e) {
-                System.exit(0);
-            }
-        });
-
-        f.setSize(1920, 483);
-        f.setLocation(250, 250);
-
-        JTable table1 = new JTable(data, headings);
-        JTable table2 = new JTable(getCoursesAsArray(),
-                new String[] {"Course Title", "Course Code", "L-T-P-S-C", "Pre-requsite",
-                        "Lecturer", "Lab Assistance"});
-
-        Font nice_font        = new Font(Font.SANS_SERIF, Font.PLAIN, 14);
-        Font nice_header_font = new Font(Font.SANS_SERIF, Font.BOLD, 14);
-
-        table1.setFont(nice_font);
-        table2.setFont(nice_font);
-        table1.setRowHeight(30);
-        table2.setRowHeight(30);
-        table1.getTableHeader().setFont(nice_header_font);
-        table2.getTableHeader().setFont(nice_header_font);
-
-        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
-        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
-        for (int i = 0; i < table1.getColumnCount(); i++)
-            table1.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
-        for (int i = 0; i < table2.getColumnCount(); i++)
-            table2.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
-
-        JScrollPane tt1 = new JScrollPane(table1);
-        JScrollPane tt2 = new JScrollPane(table2);
-
-        JPanel panel = new JPanel(new GridLayout(2, 1));
-
-        EmptyBorder padding = new EmptyBorder(20, 20, 20, 20);
-
-        panel.setBorder(padding);
-
-        panel.add(tt1);
-        panel.add(tt2);
-        f.add(panel, BorderLayout.CENTER);
-        f.setVisible(true);
     }
 
-    public void makeTheTimeTable() {
+    private String printTableHelper(String[][] data, String[] headings) {
+    	return printTableHelper(data, headings, 250);
+    }
+    
+	private String printTableHelper(String[][] data, String[] headings, int width) {
+		AsciiTable act = new AsciiTable();
+		
+		act.getContext().setWidth(width);
+		
+		act.setPadding(10);
+		act.addRule();
+		act.addRow(Arrays.asList(headings)); // no repetition
+		act.addRule();
+		
+		ArrayList<ArrayList<String>> data2d = new ArrayList<ArrayList<String>>();
+		
+		for (int i = 0 ; i < data.length; i++) {
+			data2d.add(new ArrayList<String>());
+			for (int j = 0; j < data[i].length; j++) {
+				data2d.get(i).add(data[i][j]);
+				if (j > 1) {
+					if (data2d.get(i).get(j).equals(data2d.get(i).get(j-1))) {
+						data2d.get(i).set(j-1, null);
+					}
+				}
+			}
+		}
+		
+		for (int i = 0; i < data2d.size(); i++) {
+			act.addRow(data2d.get(i));
+			act.addRule();
+		}
+		
+		act.setTextAlignment(TextAlignment.CENTER);
+		act.getContext().setFrameLeftRightMargin(5);
+		act.getContext().setFrameTopBottomMargin(1);
+		System.out.println(act.render());
+		
+		return act.render();
+	}
+	
+	private void writeToFile(String filepath, String contents) {
+		Font outputFont = new Font(Font.MONOSPACED, Font.PLAIN, 28);		
+		FontMetrics fm = (new Canvas()).getFontMetrics(outputFont);
+		
+		String[] lines = contents.split("\n");
+		
+		final int WIDTH = fm.stringWidth(lines[0]); // First line width is always the maximum
+		final int HEIGHT = fm.getHeight() * lines.length + 1;
+
+		
+		BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_ARGB);
+		Graphics2D g2d = image.createGraphics(); 
+		
+		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        g2d.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+        
+        g2d.setColor(Color.BLACK);
+//        g2d.setColor(Color.WHITE);
+        g2d.fillRect(0, 0, WIDTH, HEIGHT);
+        
+        g2d.setColor(Color.LIGHT_GRAY);
+//        g2d.setColor(Color.BLACK);
+        g2d.setFont(outputFont);
+        
+        FontMetrics metrics = g2d.getFontMetrics(g2d.getFont());
+        int lineHeight = metrics.getHeight();
+        int y = metrics.getAscent();
+        
+        for (String line : lines) {
+        	g2d.drawString(line, 10, y);
+        	y += lineHeight;
+        }
+        g2d.dispose();
+
+
+        try {
+            ImageIO.write(image, "png", new File(filepath));
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+	}
+	
+	public void makeTheTimeTable() {
         /*
          * Timings: 9:00 to 9:30 | 9:30 10 | 10 to 10:30 | <break> | 10:45 to
          * 11:15 | 11:15 to 11 : 45 | 11:45 to 12:15 | 12:15 to 12:45 | 12:45 to
