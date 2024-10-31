@@ -129,12 +129,12 @@ public class TimeTable {
         g2d.setRenderingHint(
                 RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 
-//        g2d.setColor(Color.BLACK);
-                g2d.setColor(Color.WHITE);
+        //        g2d.setColor(Color.BLACK);
+        g2d.setColor(Color.WHITE);
         g2d.fillRect(0, 0, WIDTH, HEIGHT);
 
-//        g2d.setColor(Color.LIGHT_GRAY);
-                g2d.setColor(Color.BLACK);
+        //        g2d.setColor(Color.LIGHT_GRAY);
+        g2d.setColor(Color.BLACK);
         g2d.setFont(outputFont);
 
         FontMetrics metrics = g2d.getFontMetrics(g2d.getFont());
