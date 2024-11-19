@@ -58,8 +58,8 @@ public class TimeTable {
         String[] coursesHeadings = {"Course Title", "Course Code", "L-T-P-S-C", "Lecturer"};
         String[][] coursesArray  = getCoursesAsArray(sem);
 
-        String s1 = printTableHelper(data, headings, 250);
-        String s2 = printTableHelper(coursesArray, coursesHeadings, 200);
+        String s1 = printTableHelper(data, headings, 250, filename, true);
+        String s2 = printTableHelper(coursesArray, coursesHeadings, 200, filename, false);
 
         writeToFile("timeTable/" + filename, s1 + s2);
     }
@@ -89,8 +89,8 @@ public class TimeTable {
         return ccc;
     }
 
-
-    private String printTableHelper(String[][] data, String[] headings, int width) {
+    private String printTableHelper(
+            String[][] data, String[] headings, int width, String filename, boolean needsHeading) {
         AsciiTable act = new AsciiTable();
 
         act.getContext().setWidth(width);
@@ -122,6 +122,8 @@ public class TimeTable {
         act.setTextAlignment(TextAlignment.CENTER);
         act.getContext().setFrameLeftRightMargin(5);
         act.getContext().setFrameTopBottomMargin(1);
+
+        if (needsHeading) System.out.println("\n\t\t" + filename.split("\\.")[0]);
 
         //        act.getContext().setGrid(U8_Grids.borderDouble());
         System.out.println(act.render());
