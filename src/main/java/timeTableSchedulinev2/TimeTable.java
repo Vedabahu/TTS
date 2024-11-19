@@ -208,6 +208,8 @@ public class TimeTable {
                                 }
                         }
 
+                        if (j == 2 && !timeTable[count][i][j - 1].equals(c)) continue;
+
                         // To avoid breaks
                         if (j == 6 || j == 7) j = 8;
 
@@ -258,7 +260,7 @@ public class TimeTable {
                     if (searchDayForAnyOtherLecture(c, i, count)) continue;
 
                     for (int j = 0; j < 13 && t > 0; j++) {
-                    	if (j == 2 || j == 7) continue; // Avoid breaks
+                        if (j == 2 || j == 7) continue; // Avoid breaks
                         if (timeTable[count][i][j] == null && timeTable[count][i][j + 1] == null) {
                             timeTable[count][i][j]     = x;
                             timeTable[count][i][j + 1] = x;
