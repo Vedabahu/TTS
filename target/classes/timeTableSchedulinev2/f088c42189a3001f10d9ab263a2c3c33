@@ -1,0 +1,18 @@
+package timeTableSchedulinev2;
+
+import java.util.*;
+
+public class Main {
+
+	public static void main(String[] args) {
+		ArrayList<Course> c = ReadCSE.readCoursesFromCSV("inputFiles/CSE.csv"); 
+		ArrayList<Semester> s = Semester.convertToSems(c);
+		
+		TimeTable tt = new TimeTable(s);
+		tt.makeTimeTable();		
+		tt.printTimeTable(0, "CSE-1st-sem.png");
+		tt.printTimeTable(1, "CSE-3st-sem.png");
+		tt.printTimeTable(2, "CSE-5st-sem.png");
+	}
+
+}

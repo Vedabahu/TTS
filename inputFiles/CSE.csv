@@ -1,0 +1,21 @@
+Semester,Sl. No,Course code,Course name,Credits,L-T-P-S-C,Faculty
+1,2,ASD151,Introduction to Design,1,3-0-0-0-1,Dr. Abdul Wahid
+1,4,MA162,Probability,2,3-1-0-0-2,Dr. Lakshman
+1,5,EC161,Digital Design,2,3-0-2-0-2,Dr. Jagadeesha R Bhat
+1,6,CS161,Problem Solving through Programming,4,3-0-2-0-4,"Dr. Sunil P V, Dr. Sunil C K"
+1,7,HS161,English Language and Communication,3,3-0-0-0-3,Dr. Rajesh 
+3,1,CS201,Discrete Mathematics,4,3-1-0-0-4,"Dr. Animesh Roy, Dr. Sadhvi"
+3,2,CS207,OOP,4,3-0-2-0-4,"Dr. Pramod, Dr. Vivek"
+3,3,CS208,Computer Architecture,4,3-0-2-0-4,Dr. Prabhu Prasad B M
+3,4,CS202,DAA,5,3-1-2-0-4,"Dr. Malay, Dr. Vivek Raj, Dr. Dibyajyothi"
+3,5,MA201,Probability,4,3-1-0-0-4,Dr. Anand
+3,6,HS206,"Industrial Social
+Psychology",3,3-0-0-0-3,Dr. Navyashree
+5,1,CS309,Statistics for Computer Science,4,3-1-0-0-4,"Dr. Ramesh Athe, Dr. Sunil C K"
+5,2,CS303,Computer Networks,5,3-1-2-0-5,"Dr. C B Akki, Dr. Sadhvi"
+5,3,CS304,Artificial Intelligence,4,3-1-0-0-4,"Dr. Krishendu, Dr. Girish"
+5,4,Theory basket ,Graph Theory/Advanced algorithm design,4,4-0-0-0-4,"Dr. Pavan, Dr. Suvadip Hazra"
+5,5,Open electives,"Cryptography and Information Security /
+Parallel Computing / 
+Internet of Things",4,4-0-0-0-4,"Dr. Rajendra Hegadi, Dr. Pramod, Dr. Prakash"
+5,6,HS101,Environmental studies,2,0-0-0-8-2,Dr.Anand Barangi

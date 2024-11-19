@@ -1,0 +1,15 @@
+Language: Java
+BasedOnStyle: Chromium
+IndentWidth: 4
+AlignArrayOfStructures: Right
+AlignConsecutiveAssignments: Consecutive
+InsertBraces: true
+# BreakBeforeBraces: Allman
+BreakBeforeBraces: Attach
+SeparateDefinitionBlocks: Always
+SortIncludes: true
+---
+Language: Json
+BreakArrays: false
+SpaceBeforeJsonColon: true
+IndentWidth: 2
