@@ -180,7 +180,7 @@ public class TimeTable {
 
     public void makeTimeTable() {
         /*
-         * Timings: 9:00 to 9:30 | 9:30 10 | 10 to 10:30 | <break> | 10:45 to
+         * Timings: 9:00 to 9:30 | 9:30 to 10 | 10 to 10:30 | <break> | 10:45 to
          * 11:15 | 11:15 to 11 : 45 | 11:45 to 12:15 | 12:15 to 12:45 | 12:45 to
          * 13:15 | <break> | 14:30 to 15 | 15 to 15:30 | 15:30 to 16:00 | 16:00
          * to 16:30 | 16:30 to 17 | 17 to 17:30 Duration: 30 | 30 | 30 | ... |
@@ -258,6 +258,7 @@ public class TimeTable {
                     if (searchDayForAnyOtherLecture(c, i, count)) continue;
 
                     for (int j = 0; j < 13 && t > 0; j++) {
+                    	if (j == 2 || j == 7) continue; // Avoid breaks
                         if (timeTable[count][i][j] == null && timeTable[count][i][j + 1] == null) {
                             timeTable[count][i][j]     = x;
                             timeTable[count][i][j + 1] = x;
