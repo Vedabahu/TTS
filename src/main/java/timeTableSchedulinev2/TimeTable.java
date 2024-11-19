@@ -58,7 +58,7 @@ public class TimeTable {
         String[] coursesHeadings = {"Course Title", "Course Code", "L-T-P-S-C", "Lecturer"};
         String[][] coursesArray  = getCoursesAsArray(sem);
 
-        String s1 = printTableHelper(data, headings);
+        String s1 = printTableHelper(data, headings, 250);
         String s2 = printTableHelper(coursesArray, coursesHeadings, 200);
 
         writeToFile("timeTable/" + filename, s1 + s2);
@@ -89,9 +89,6 @@ public class TimeTable {
         return ccc;
     }
 
-    private String printTableHelper(String[][] data, String[] headings) {
-        return printTableHelper(data, headings, 250);
-    }
 
     private String printTableHelper(String[][] data, String[] headings, int width) {
         AsciiTable act = new AsciiTable();
