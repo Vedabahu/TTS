@@ -76,8 +76,12 @@ public class TimeTable {
             ccc[i][2]     = cs.get(i).getLtpsc();
             ccc[i][3]     = "";
             String[] temp = cs.get(i).getFaculty();
-            for (String x : temp) {
-                ccc[i][3] += x;
+            for (int ii = 0; ii < temp.length; ii++) {
+                if (ii == temp.length - 1) {
+                    ccc[i][3] += temp[ii];
+                    continue;
+                }
+                ccc[i][3] += temp[ii] + ", ";
             }
             //            ccc[i][4] = cs.get(i).get_instructor();
             //            ccc[i][5] = cs.get(i).get_labAssistance();
