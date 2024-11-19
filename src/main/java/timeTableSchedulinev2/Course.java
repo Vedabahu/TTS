@@ -12,7 +12,7 @@ public class Course {
     private int s;
     private int c;
     private String[] faculty;
-    private String lectureType = "";
+    private String lectureType = "Lecture";
 
     public Course(int semester, String courseCode, String courseName, int credits, String ltpsc,
             int l, int t, int p, int s, int c, String[] faculty) {
