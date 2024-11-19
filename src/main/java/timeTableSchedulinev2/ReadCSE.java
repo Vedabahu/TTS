@@ -19,7 +19,7 @@ public class ReadCSE {
                 // Assuming the CSV columns follow the order:
                 // Semester, Sl. No, Course Code, Course Name, Credits, L-T-P-S-C, Faculty
 
-            	int semester = Integer.parseInt(line[1]);
+            	int semester = Integer.parseInt(line[0]);
                 String courseCode = line[2];
                 String courseName = line[3];
                 int credits = Integer.parseInt(line[4]);

@@ -67,7 +67,7 @@ public class TimeTable {
 	
 	private String[][] getCoursesAsArray(int sem) {
 		ArrayList<Course> cs = sems.get(sem).getCourses();
-        String[][] ccc = new String[cs.size()][6];
+        String[][] ccc = new String[cs.size()][4];
         for (int i = 0; i < cs.size(); i++) {
             ccc[i][0] = cs.get(i).getCourseName();
             ccc[i][1] = cs.get(i).getCourseCode();
@@ -189,7 +189,7 @@ public class TimeTable {
          * size : 5 x 14 (5 working days, 14 split time slots)
          */
 		
-		timeTable = new Course[3][5][14];
+		timeTable = new Course[4][5][14];
 		
 		int count = 0;
 		for (Semester s : sems) {

@@ -21,6 +21,7 @@ public class Semester {
 		sems.add(new Semester(1));
 		sems.add(new Semester(3));
 		sems.add(new Semester(5));
+		sems.add(new Semester(7));
 		
 		for (Semester s : sems) {
 			for (Course c : courses) {
