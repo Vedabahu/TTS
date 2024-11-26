@@ -22,7 +22,7 @@ Done by :
 ### Method 1 : Using Eclipse IDE (preferred method)
 
 1. Unzip the project to any folder
-1. Open Eclipse IDE
+1. Open Eclipse IDE (Installer link [Eclipse IDE for Java Developers](https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2024-09/R/eclipse-java-2024-09-R-win32-x86_64.zip))
 1. Navigate to `File -> Import...`
 1. Click on `General -> Existing Projects into Workspace`
 1. Select the root directory where the unzipped file is by clicking on `Browse`
@@ -48,6 +48,6 @@ Done by :
 - The file names should not be changed.
 - Each file follows the Semester, Sl.No, Course code, Course name, Credits, L-T-P-S-C, Faculty format and must not be changed.
 
+## General Errors
 
-
-
+1. Eclipse warns that there are errors in the code before running. This generally happens because the Maven Dependencies are not yet downloaded. Wait for a few seconds before trying again. Pleas make sure to have an internet connection throught the process.
