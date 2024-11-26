@@ -216,6 +216,8 @@ public class TimeTable {
                         // To avoid breaks
                         if (j == 6 || j == 7) j = 8;
 
+                        if (check3dforTeacherConflict(c, i, j)) continue;
+
                         if (timeTable[count][i][j] == null) {
                             timeTable[count][i][j] = c;
                             l -= 0.5;
@@ -264,6 +266,7 @@ public class TimeTable {
 
                     for (int j = 0; j < 13 && t > 0; j++) {
                         if (j == 2 || j == 7) continue; // Avoid breaks
+                        if (check3dforTeacherConflict(c, i, j)) continue;
                         if (timeTable[count][i][j] == null && timeTable[count][i][j + 1] == null) {
                             timeTable[count][i][j]     = x;
                             timeTable[count][i][j + 1] = x;
@@ -276,6 +279,31 @@ public class TimeTable {
 
             count += 1;
         }
+    }
+
+    private boolean check3dforTeacherConflict(Course c, int y, int z) {
+        for (String lecturer : c.getFaculty()) {
+            for (int i = 0; i < 4; i++) {
+                if (linearSearchTeachers(lecturer, i, y, z)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private boolean linearSearchTeachers(String lecturer, int x, int y, int z) {
+        Course c = timeTable[x][y][z];
+
+        if (c == null) return false;
+
+        String[] faculty = c.getFaculty();
+
+        for (String teach : faculty) {
+            if (lecturer.equals(teach)) return true;
+        }
+
+        return false;
     }
 
     private boolean searchDayForAnyOtherLecture(Course c, int day, int sem) {
