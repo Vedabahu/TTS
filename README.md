@@ -1,20 +1,53 @@
 # Time Table Scheduling System
 
-This is a Java Project which is our course project for the 3rd Semister (OOPs). It is a time table scheduling system. It uses eclipse as its IDE.
+Done by : 
+ - Rutwik S (23BCS112)
+ - Maddila Rajesh (23BCS077)
+ - Shouvik Das (23BCS125)
+ - Siddhaartha B S (23BCS127)
 
-## Usage
+## Features
 
-+ Download Eclipse Java IDE from https://www.eclipse.org/downloads/packages/installer and choose the JAVA thing.
-+ Open this folder in the IDE by clicking on `File` > `Open Projects from file system`.
-+ Start your development.
+- Input is taken from `*.csv` files found in the `inputFiles/` folder.
+- Schedules the classes for 1.5 hours at a time.
+- Schedules the tutorials for 1 hours at a time.
+- Schedules the practicals for 2 hours at a time.
+- All classes follow the LTPSC structure.
+- Makes sure that there, not more than 1 class is of 1 lecturer is scheduled for a class in a day.
+- Teacher Conflict is checked.
+- The output is in a neat formatted `.png` file. (found in `timeTable/` folder) 
+ 
+## How to Execute
 
-## Prerequisites
+### Method 1 : Using Eclipse IDE (preferred method)
 
-+ Should know how to use git. At least the basics of [Github and git](https://youtu.be/apGV9Kg7ics)
-+ Should have a github account (Make one if you do not have it).
-+ Should know java.
+1. Unzip the project to any folder
+1. Open Eclipse IDE (Installer link [Eclipse IDE for Java Developers](https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2024-09/R/eclipse-java-2024-09-R-win32-x86_64.zip))
+1. Navigate to `File -> Import...`
+1. Click on `General -> Existing Projects into Workspace`
+1. Select the root directory where the unzipped file is by clicking on `Browse`
+1. Under Projects dialogu box, make sure that `timeTableSchedulinev2` is selected.
+1. Click on finish
+1. In the left `Package Explorer`, the project will apprear
+1. Navigate to the `Main.java` file. (`src/main/java/timeTableSchedulinev2/Main.java`)
+1. Click on the green *Run* button (Run the `Main.java` file).
+1. The output is printed in the console and it will also be present in the `timeTable/` folder in the root project directory.
 
-## Guidelines
+### Method 2 : Using maven which has been manually installed (Not preferred)
 
-+ Try and make the code as self explanatory as possible.
-+ If not, add comments.
+1. Install maven
+    - [How to install Maven on windows?](https://medium.com/@gauravshah97/how-to-install-maven-on-windows-39ff317e40cf)
+    - On linux (Ubuntu based systems), run `sudo apt install maven`
+1. Open the project folder
+1. Run `make build` and `make run`
+
+
+## Input
+
+- Files are at `inputFiles/` folder.
+- The file names should not be changed.
+- Each file follows the Semester, Sl.No, Course code, Course name, Credits, L-T-P-S-C, Faculty format and must not be changed.
+
+## General Errors
+
+1. Eclipse warns that there are errors in the code before running. This generally happens because the Maven Dependencies are not yet downloaded. Wait for a few seconds before trying again. Pleas make sure to have an internet connection throught the process.
