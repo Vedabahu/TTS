@@ -23,15 +23,26 @@ Done by :
 
 1. Unzip the project to any folder
 1. Open Eclipse IDE (Installer link [Eclipse IDE for Java Developers](https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2024-09/R/eclipse-java-2024-09-R-win32-x86_64.zip))
+![Eclipse IDE](assets/readmeImages/Screenshot (1).png)
+![Restore the File Viewer](assets/readmeImages/Screenshot (2).png)
 1. Navigate to `File -> Import...`
+![Import](assets/readmeImages/Screenshot (3).png)
 1. Click on `General -> Existing Projects into Workspace`
+![Import2](assets/readmeImages/Screenshot (4).png)
 1. Select the root directory where the unzipped file is by clicking on `Browse`
+![Opend Unzipped folder](assets/readmeImages/Screenshot (5).png)
 1. Under Projects dialogu box, make sure that `timeTableSchedulinev2` is selected.
+![Opend Unzipped folder](assets/readmeImages/Screenshot (5).png)
 1. Click on finish
+![Opend Unzipped folder](assets/readmeImages/Screenshot (6).png)
 1. In the left `Package Explorer`, the project will apprear
+![package Explorer](assets/readmeImages/Screenshot (7).png)
 1. Navigate to the `Main.java` file. (`src/main/java/timeTableSchedulinev2/Main.java`)
+![package Explorer](assets/readmeImages/Screenshot (8).png)
 1. Click on the green *Run* button (Run the `Main.java` file).
+![package Explorer](assets/readmeImages/Screenshot (10).png)
 1. The output is printed in the console and it will also be present in the `timeTable/` folder in the root project directory.
+![package Explorer](assets/readmeImages/Screenshot (11).png)
 
 ### Method 2 : Using maven which has been manually installed (Not preferred)
 
@@ -51,3 +62,4 @@ Done by :
 ## General Errors
 
 1. Eclipse warns that there are errors in the code before running. This generally happens because the Maven Dependencies are not yet downloaded. Wait for a few seconds before trying again. Pleas make sure to have an internet connection throught the process.
+1. In case this still presists, Click on `Project -> Update Maven Project -> OK`. This should fix all issues.
