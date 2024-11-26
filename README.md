@@ -23,26 +23,26 @@ Done by :
 
 1. Unzip the project to any folder
 1. Open Eclipse IDE (Installer link [Eclipse IDE for Java Developers](https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2024-09/R/eclipse-java-2024-09-R-win32-x86_64.zip))
-![Eclipse IDE](assets/readmeImages/Screenshot (1).png)
-![Restore the File Viewer](assets/readmeImages/Screenshot (2).png)
+![Eclipse IDE](assets/readmeImages/Screenshot_(1).png)
+![Restore the File Viewer](assets/readmeImages/Screenshot_(2).png)
 1. Navigate to `File -> Import...`
-![Import](assets/readmeImages/Screenshot (3).png)
+![Import](assets/readmeImages/Screenshot_(3).png)
 1. Click on `General -> Existing Projects into Workspace`
-![Import2](assets/readmeImages/Screenshot (4).png)
+![Import2](assets/readmeImages/Screenshot_(4).png)
 1. Select the root directory where the unzipped file is by clicking on `Browse`
-![Opend Unzipped folder](assets/readmeImages/Screenshot (5).png)
+![Opend Unzipped folder](assets/readmeImages/Screenshot_(5).png)
 1. Under Projects dialogu box, make sure that `timeTableSchedulinev2` is selected.
-![Opend Unzipped folder](assets/readmeImages/Screenshot (5).png)
+![Opend Unzipped folder](assets/readmeImages/Screenshot_(5).png)
 1. Click on finish
-![Opend Unzipped folder](assets/readmeImages/Screenshot (6).png)
+![Opend Unzipped folder](assets/readmeImages/Screenshot_(6).png)
 1. In the left `Package Explorer`, the project will apprear
-![package Explorer](assets/readmeImages/Screenshot (7).png)
+![package Explorer](assets/readmeImages/Screenshot_(7).png)
 1. Navigate to the `Main.java` file. (`src/main/java/timeTableSchedulinev2/Main.java`)
-![package Explorer](assets/readmeImages/Screenshot (8).png)
+![package Explorer](assets/readmeImages/Screenshot_(8).png)
 1. Click on the green *Run* button (Run the `Main.java` file).
-![package Explorer](assets/readmeImages/Screenshot (10).png)
+![package Explorer](assets/readmeImages/Screenshot_(10).png)
 1. The output is printed in the console and it will also be present in the `timeTable/` folder in the root project directory.
-![package Explorer](assets/readmeImages/Screenshot (11).png)
+![package Explorer](assets/readmeImages/Screenshot_(11).png)
 
 ### Method 2 : Using maven which has been manually installed (Not preferred)
 
